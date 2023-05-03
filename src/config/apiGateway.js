@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const apiGateway = axios.create({
-    baseURL: 'http://localhost:8989/api/v2/yr',
+    baseURL: 'http://localhost:8989/api/v2',
     timeout: 60* 1000, // in milliseconds
     headers: {'Authorization': 'Bearer VEUdEii4n7nCvofaBRJEC'}
   });

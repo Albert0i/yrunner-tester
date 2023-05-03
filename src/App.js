@@ -1,10 +1,21 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Home } from './pages/Home'
+import { Test } from './pages/Test'
+import { Navbar } from './components/Navbar'
 import './App.css';
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+      <div className='min-h-screen w-auto p-4 bg-gray-100 text-gray-900 '>
+        <div className='text-2xl text-center'>YRunner</div>        
+        <Router>
+          <Navbar />          
+          <Routes>
+            <Route path='/test' element={<Test />} />
+            <Route path='/*' element={<Home />} />
+          </Routes>
+        </Router>
+      </div>
   );
 }
 
