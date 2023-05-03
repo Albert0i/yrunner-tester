@@ -7,7 +7,7 @@ import './App.css';
 function App() {
   return (
       <div className='min-h-screen w-auto p-4 bg-gray-100 text-gray-900 '>
-        <div className='text-2xl text-center'>YRunner</div>        
+        <div className='text-2xl text-center'>YRunner Tester</div>        
         <Router>
           <Navbar />          
           <Routes>
