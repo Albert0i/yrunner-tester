@@ -27,4 +27,7 @@ export const Test = () => {
 /*
    react-use-precision-timer
    https://www.npmjs.com/package/react-use-precision-timer?activeTab=readme
+
+   useTimer
+   https://justinmahar.github.io/react-use-precision-timer/?path=/story/docs-usetimer--page#timer
 */
