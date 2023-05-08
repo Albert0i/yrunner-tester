@@ -4,37 +4,54 @@ import { apiGateway } from '../config/apiGateway'
 export const Home = () => {
     const [newTabname, setNewTabname] = useState('')
     const [cache, setCache] = useState([])
-
+    const [data, setData] = useState()
+    
     useEffect(()=> {
+        getCachedTables()
+    }, [])
+
+    const getCachedTables = async () => {
         apiGateway.post('/cache/status')
             .then(data => setCache(data.data)) 
             .catch(err => console.log(err))
-    }, [])
+    }
 
     const load = (tabname) => {
-        apiGateway.post(`/cache/load/${tabname}`)
-            .then(data => console.log(data)) 
-            .catch(err => console.log(err))
-    }
-    const unload = (tabname) => {
-        apiGateway.post(`/cache/unload/${tabname}`)
-            .then(data => console.log(data)) 
-            .catch(err => console.log(err))
+        if (newTabname !=='') {
+            apiGateway.post(`/cache/load/${tabname}`)
+            .then(data => setData(data.data))
+            .catch(err => setData(err))
+        }
+        else 
+            alert('Please input filename')
     }
 
+    const unload = (tabname) => {
+        apiGateway.post(`/cache/unload/${tabname}`)
+            .then(data => setData(data.data))
+            .catch(err => setData(err))
+    }
+   
     return (
         <div>
-            <input type='text' onChange={ e=> setNewTabname(e.target.value)} autoFocus></input>
-            <button onClick={() => { load(newTabname)} }>Load</button>
+            <input type='text' autoFocus placeholder='filename'
+                    className='px-2 py-1' 
+                    onChange={ e=> setNewTabname(e.target.value)}></input>
+            <button className='bg-green-700 hover:bg-green-500 text-white text-xs font-bold  uppercase rounded px-2 py-1 mx-2 my-1'
+                    onClick={() => { load(newTabname)} }>Load</button>
             <hr/>
             <ol>                    
             { cache.map(item => {
                 return (<li key={item.tabname}>
                     { item.tabname } { item.crtdate } { item.crttime }
-                    <button onClick={() => { unload(item.tabname)} }>Unload</button> 
+                    <button className='bg-red-700 hover:bg-red-500 text-white text-xs font-bold  uppercase rounded px-2 py-1 mx-2 my-1'
+                            onClick={() => { unload(item.tabname)} }>Unload</button> 
                 </li>)
             })}
             </ol>
+            <div className='w-max text-justify' >
+                <p>{ data && JSON.stringify(data) }</p>
+            </div>
         </div>
     )
 } 

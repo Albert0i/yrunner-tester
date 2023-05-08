@@ -2,12 +2,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Home } from './pages/Home'
 import { Test } from './pages/Test'
 import { Navbar } from './components/Navbar'
+import { Header } from './components/Header'
+import { Footer } from './components/Footer'
 import './App.css';
 
 function App() {
   return (
-      <div className='min-h-screen w-auto p-4 bg-gray-100 text-gray-900 '>
-        <div className='text-2xl text-center'>YRunner Tester</div>        
+      <div className=' h-full p-4 bg-gray-100 text-gray-900'>
+        <Header />
         <Router>
           <Navbar />          
           <Routes>
@@ -15,6 +17,7 @@ function App() {
             <Route path='/*' element={<Home />} />
           </Routes>
         </Router>
+        <Footer />
       </div>
   );
 }
