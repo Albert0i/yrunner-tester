@@ -15,7 +15,6 @@ export const Test = () => {
             stopwatch.start()
             apiGateway.get(`/yr/${tabname}`)
                 .then(data => { 
-                                console.log(data)                             
                                 setCount(stopwatch.getElapsedRunningTime())
                                 stopwatch.stop()
                               }) 

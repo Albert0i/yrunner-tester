@@ -60,7 +60,7 @@ export const Home = () => {
             </ol>
             <div className='w-max text-justify' >
                 <p>{ data && JSON.stringify(data) }</p>
-                <p>{ count }</p>
+                <p>{ count }</p>                
             </div>
         </div>
     )
