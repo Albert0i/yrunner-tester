@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { apiGateway } from '../config/apiGateway'
 import { useStopwatch } from "react-use-precision-timer"
 
 export const Test = () => {
     const [tabname, setTabname] = useState('')
-    const inputRef = useRef()
+    const [count, setCount] = useState(0)
     const stopwatch = useStopwatch();
 
     useEffect (()=> {
@@ -16,7 +16,7 @@ export const Test = () => {
             apiGateway.get(`/yr/${tabname}`)
                 .then(data => { 
                                 console.log(data)                             
-                                console.log(stopwatch.getElapsedRunningTime())
+                                setCount(stopwatch.getElapsedRunningTime())
                                 stopwatch.stop()
                               }) 
                 .catch(err => console.log(err))
@@ -28,10 +28,13 @@ export const Test = () => {
         <div>
             <input type='text' autoFocus placeholder='filename'
                     className='px-2 py-1'
-                    ref={inputRef} 
                     onChange={ e => setTabname(e.target.value)}></input>
             <button className='bg-green-700  hover:bg-green-500 text-white text-xs font-bold  uppercase rounded px-2 py-1 mx-2 my-1'
                     onClick={getFile}>Get</button>
+            
+            <div className='w-max text-justify' >
+                <p>{ count }</p>
+            </div>
         </div>
     )
 }
