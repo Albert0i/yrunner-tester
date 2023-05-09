@@ -4,7 +4,6 @@ import { useStopwatch } from "react-use-precision-timer"
 import { useLocalStorage } from '../hook/useLocalStorage'
 
 export const Home = () => {
-    //const [newTabname, setNewTabname] = useState('')
     const [newTabname, setNewTabname] = useLocalStorage('newTabname', null)
     const [cache, setCache] = useState([])
     const [data, setData] = useState()
@@ -28,13 +27,17 @@ export const Home = () => {
             setIsLoading(true)
             apiGateway.post(`/cache/load/${tabname}`)
             .then(data => { 
-                    setData(data.data) 
+                    setData(data.data)                     
+                })
+                .catch (err => {
+                    setData(err.response.data)
+                })
+                .finally(() => {
                     setCount(stopwatch.getElapsedRunningTime())
                     stopwatch.stop()
                     setIsLoading(false)
                     getCachedTables()
                 })
-            .catch(err => setData(err))
         }
         else 
             alert('Please input filename')
@@ -46,12 +49,16 @@ export const Home = () => {
         apiGateway.post(`/cache/unload/${tabname}`)
             .then(data => { 
                     setData(data.data)
+                })
+                .catch (err => {
+                    setData(err.response.data)
+                })
+                .finally(() => {
                     setCount(stopwatch.getElapsedRunningTime())
                     stopwatch.stop()
                     setIsLoading(false)
                     getCachedTables()
                 })
-            .catch(err => setData(err))
     }
        
     if (isLoading) 
@@ -104,4 +111,7 @@ export const Home = () => {
 
    HTML <textarea> 表單多行文字輸入欄位
    https://www.fooish.com/html/textarea-tag.html
+
+   Axios | Handling Errors
+   https://axios-http.com/docs/handling_errors
 */

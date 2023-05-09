@@ -4,7 +4,6 @@ import { useStopwatch } from "react-use-precision-timer"
 import { useLocalStorage } from '../hook/useLocalStorage'
 
 export const Test = () => {
-    //const [tabname, setTabname] = useState('')
     const [tabname, setTabname] = useLocalStorage('tabname', null)
     const [data, setData] = useState()
     const [count, setCount] = useState(0)
@@ -17,12 +16,16 @@ export const Test = () => {
             setIsLoading(true)
             apiGateway.get(`/yr/${tabname}`)
                 .then(data => { 
-                                setData(data.data) 
-                                setCount(stopwatch.getElapsedRunningTime())
-                                stopwatch.stop()
-                                setIsLoading(false)
-                              }) 
-                .catch(err => setData(err))
+                    setData(data.data) 
+                }) 
+                .catch (err => {                    
+                    setData(err.response.data) 
+                })
+                .finally(() => {
+                    setCount(stopwatch.getElapsedRunningTime())
+                    stopwatch.stop()
+                    setIsLoading(false)
+                })
         } else {
             alert('Please input filename')
         }
@@ -67,4 +70,7 @@ export const Test = () => {
 
    HTML <textarea> 表單多行文字輸入欄位
    https://www.fooish.com/html/textarea-tag.html
+
+   Axios | Handling Errors
+   https://axios-http.com/docs/handling_errors
 */
