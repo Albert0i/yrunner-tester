@@ -82,8 +82,13 @@ export const Home = () => {
                 </div>
             </div>
 
+            <div className='flex justify-start w-full mt-4'>
+                <label htmlFor="output" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cached items</label>
+            </div>
+
             <div>
-                { cache.map(item => {
+                { cache.length===0 && <div className='text-sm'>None</div>} 
+                { cache.length > 0 && cache.map(item => {
                     return (<div key={item.tabname} className='flex justify-start'>
                                 <div className='w-1/2'>                            
                                     { item.tabname } { item.crtdate } { item.crttime }
@@ -96,8 +101,7 @@ export const Home = () => {
                 })}
             </div>
             
-
-            <div className='flex justify-start w-full mt-8'>
+            <div className='flex justify-start w-full mt-4'>
                 <label htmlFor="output" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Output</label>
             </div>
             <div className='flex justify-start w-full'>
