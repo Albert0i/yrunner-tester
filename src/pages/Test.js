@@ -39,16 +39,24 @@ export const Test = () => {
         )
 
     return (
-        <div>
-            <input type='text' autoFocus placeholder='filename'
-                    className='px-2 py-1' defaultValue={tabname}
-                    onChange={ e => setTabname(e.target.value)}></input>
-            <button className='bg-green-700  hover:bg-green-500 text-white text-xs font-bold  uppercase rounded px-2 py-1 mx-2 my-1'
-                    onClick={getFile}>Get</button>
+        <div className='flex-col'>
+            <div className='flex justify-start'>
+                <div className='w-1/2'>
+                    <input type='text' autoFocus placeholder='filename'
+                        className='px-2 py-1' defaultValue={tabname}
+                        onChange={ e => setTabname(e.target.value)}></input>
+                </div>
+                <div>
+                    <button className='bg-green-700  hover:bg-green-500 text-white text-xs font-bold  uppercase rounded px-6 py-1 mx-2 my-1'
+                        onClick={getFile}>Get</button>
+                </div>
+            </div>
             
-            <div>
+            <div className='flex justify-start w-full mt-8'>
                 <label htmlFor="output" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Output</label>
-                <textarea id="output" rows="6" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+            </div>
+            <div className='flex justify-start w-full'>
+                    <textarea id="output" rows="6" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
                     defaultValue={ data?.success? `Finish reading ${data.rows.length} records`
                                     .concat(`\nTime elasped is ${count<1000?count:count/1000} ${count<1000?'ms':'s'} `)
                                     : JSON.stringify(data) } 

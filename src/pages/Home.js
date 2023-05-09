@@ -69,27 +69,39 @@ export const Home = () => {
         )
 
     return (
-        <div>
-            <input type='text' autoFocus placeholder='filename'
-                    className='px-2 py-1' defaultValue={newTabname}
-                    onChange={ e=> setNewTabname(e.target.value)}></input>
-            <button className='bg-green-700 hover:bg-green-500 text-white text-xs font-bold  uppercase rounded px-2 py-1 mx-2 my-1'
-                    onClick={() => { load(newTabname)} }>Load</button>
-            <hr/>
-            <ol>   
-
-            { cache.map(item => {
-                return (<li key={item.tabname}>
-                    { item.tabname } { item.crtdate } { item.crttime }
-                    <button className='bg-red-700 hover:bg-red-500 text-white text-xs font-bold  uppercase rounded px-2 py-1 mx-2 my-1'
-                            onClick={() => { unload(item.tabname)} }>Unload</button> 
-                </li>)
-            })}
-            </ol>
+        <div className='flex-col'>
+            <div className='flex justify-start'>
+                <div className='w-1/2'>
+                    <input type='text' autoFocus placeholder='filename'
+                            className='px-2 py-1' defaultValue={newTabname}
+                            onChange={ e=> setNewTabname(e.target.value)}></input>
+                </div>
+                <div>
+                    <button className='bg-green-700 hover:bg-green-500 text-white text-xs font-bold  uppercase rounded px-4 py-1 mx-2 my-1'
+                            onClick={() => { load(newTabname)} }>Load</button>
+                </div>
+            </div>
 
             <div>
+                { cache.map(item => {
+                    return (<div key={item.tabname} className='flex justify-start'>
+                                <div className='w-1/2'>                            
+                                    { item.tabname } { item.crtdate } { item.crttime }
+                                </div>
+                                <div>
+                                    <button className='bg-red-700 hover:bg-red-500 text-white text-xs font-bold  uppercase rounded px-2 py-1 mx-2 my-1'
+                                            onClick={() => { unload(item.tabname)} }>Unload</button> 
+                                </div>
+                            </div>)
+                })}
+            </div>
+            
+
+            <div className='flex justify-start w-full mt-8'>
                 <label htmlFor="output" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Output</label>
-                <textarea id="output" rows="6" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+            </div>
+            <div className='flex justify-start w-full'>
+                    <textarea id="output" rows="6" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
                     defaultValue={ data && JSON.stringify(data).concat(
                                     `\nTime elasped is ${count<1000?count:count/1000} ${count<1000?'ms':'s'} `) }
                     readOnly={true} >
