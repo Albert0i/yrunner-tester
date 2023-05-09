@@ -43,7 +43,7 @@ export const Test = () => {
             <div className='flex justify-start'>
                 <div className='w-1/2'>
                     <input type='text' autoFocus placeholder='filename'
-                        className='px-2 py-1' defaultValue={tabname}
+                        className='px-2 py-1 w-2/3' defaultValue={tabname}
                         onChange={ e => setTabname(e.target.value)}></input>
                 </div>
                 <div>
