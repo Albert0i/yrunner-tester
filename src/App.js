@@ -8,7 +8,7 @@ import './App.css';
 
 function App() {
   return (
-      <div className='h-screen p-4 bg-gray-100 text-gray-900'>
+      <div className='h-screen p-4 bg-gray-100 text-gray-900 md:container md:mx-auto'>
         <Header />
         <Router>
           <Navbar />          
