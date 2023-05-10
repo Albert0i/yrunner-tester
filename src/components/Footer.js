@@ -1,5 +1,5 @@
 export const Footer = () => {
     return (
-        <div>&copy; 2023</div>
+        <div className='fixed bottom-4'>&copy; 2023</div>
     )
 }
