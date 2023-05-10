@@ -16,7 +16,9 @@ export const Test = () => {
             setIsLoading(true)
             apiGateway.get(`/yr/${tabname}`)
                 .then(data => { 
-                    setData(data.data) 
+                    //setData(data.data) 
+                    const minData = {...data.data, rows: data.data.rows.length}
+                    setData(minData)
                 }) 
                 .catch (err => {                    
                     setData(err.response.data) 
@@ -57,10 +59,9 @@ export const Test = () => {
             </div>
             <div className='flex justify-start w-full'>
                     <textarea id="output" rows="6" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                    defaultValue={ data?.success? `Finish reading ${data.rows.length} records`
-                                    .concat(`\nTime elasped is ${count<1000?count:count/1000} ${count<1000?'ms':'s'} `)
-                                    : JSON.stringify(data) } 
-                    readOnly={true} >
+                    defaultValue={ data && JSON.stringify(data).concat(
+                                    `\nTime elasped is ${count<1000?count:count/1000} ${count<1000?'ms':'s'} `) }
+        readOnly={true} >
                 </textarea>
             </div>
         </div>
