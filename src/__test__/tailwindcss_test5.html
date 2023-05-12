@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        body {
+        margin-top: 20px; 
+        /* 
+           This margin just makes the text easier to read. 
+           You can remove it if you want since it can mess with your other styles. 
+        */
+        }
+
+        body::before {
+        content: "";
+        color: red;
+        font-size: 1rem;
+        font-weight: bold;
+        position: fixed;
+        top: 0;
+        right: 0;
+        }
+
+        /* 
+            This box class is purely used for explaining how the tailwindcss container break point works. 
+            https://tailwindcss.com/docs/container
+        */
+        .box {
+        background-color: lightblue;
+        border: 1px solid blue;
+        min-height: 25px;
+        font-size: 1rem;
+        }
+
+        @media (min-width: 640px) {
+        body::before {
+            content: "sm";
+        }
+        }
+
+        @media (min-width: 768px) {
+        body::before {
+            content: "md";
+        }
+        }
+
+        @media (min-width: 1024px) {
+        body::before {
+            content: "lg";
+        }
+        }
+
+        @media (min-width: 1280px) {
+        body::before {
+            content: "xl";
+        }
+        }
+
+        @media (min-width: 1536px) {
+        body::before {
+            content: "2xl";
+        }
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="h-screen flex flex-col justify-center items-center">
+
+    </div>
+</body>
+</html>
