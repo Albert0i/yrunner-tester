@@ -71,11 +71,17 @@
     <div class="md:container md:mx-auto bg-gray-100 h-screen font-sans">
         <div class="text-3xl text-center">Title</div>
         <div class="flex flex-col sm:flex-row justify-around items-center">
-            <div class="w-32 h-32 bg-red-100 flex justify-center items-center mb-2 sm:mb-0">A</div>
-            <div class="w-32 h-32 bg-green-100 flex justify-center items-center mb-2 sm:mb-0">B</div>
-            <div class="w-32 h-32 bg-yellow-100 flex justify-center items-center mb-2 sm:mb-0">B</div>
-            <div class="w-32 h-32 bg-indigo-100 flex justify-center items-center mb-2 sm:mb-0">D</div>
-            <div class="w-32 h-32 bg-blue-100 flex justify-center items-center mb-2 sm:mb-0">E</div>
+            <div class="w-32 h-32 bg-red-100 flex justify-center items-center mb-2 sm:mb-0 hover:font-bold hover:text-6xl transition-all">A</div>
+            <div class="w-32 h-32 bg-green-100 flex justify-center items-center mb-2 sm:mb-0 hover:font-bold hover:text-6xl transition-colors">B</div>
+            <div class="w-32 h-32 bg-yellow-100 flex justify-center items-center mb-2 sm:mb-0 hover:font-bold hover:text-6xl transition-opacity">C</div>
+            <div class="w-32 h-32 bg-indigo-100 flex justify-center items-center mb-2 sm:mb-0 hover:font-bold hover:text-6xl transition-shadow">D</div>
+            <div class="w-32 h-32 bg-blue-100 flex justify-center items-center mb-2 sm:mb-0 hover:font-bold hover:text-6xl transition-transform">E</div>
+        </div>
+
+        <div class="flex flex-col">
+            <input type="text" class="m-4 p-2" />
+        
+            <button class="bg-blue-100 rounded m-4 p-4 hover:scale-150 transition-all delay-500 duration-500">CLick Me</button>
         </div>
     </div>
 </body>
