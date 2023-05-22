@@ -1,77 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Title</title>
     <style>
-        body {
-        margin-top: 20px; 
+      body {
+        margin-top: 20px;
         /* 
            This margin just makes the text easier to read. 
            You can remove it if you want since it can mess with your other styles. 
         */
-        }
+      }
 
-        body::before {
-        content: "";
+      body::before {
+        content: '';
         color: red;
         font-size: 1rem;
         font-weight: bold;
         position: fixed;
         top: 0;
         right: 0;
-        }
+      }
 
-        /* 
+      /* 
             This box class is purely used for explaining how the tailwindcss container break point works. 
             https://tailwindcss.com/docs/container
         */
-        .box {
+      .box {
         background-color: lightblue;
         border: 1px solid blue;
         min-height: 25px;
         font-size: 1rem;
-        }
+      }
 
-        @media (min-width: 640px) {
+      @media (min-width: 640px) {
         body::before {
-            content: "sm";
+          content: 'sm';
         }
-        }
+      }
 
-        @media (min-width: 768px) {
+      @media (min-width: 768px) {
         body::before {
-            content: "md";
+          content: 'md';
         }
-        }
+      }
 
-        @media (min-width: 1024px) {
+      @media (min-width: 1024px) {
         body::before {
-            content: "lg";
+          content: 'lg';
         }
-        }
+      }
 
-        @media (min-width: 1280px) {
+      @media (min-width: 1280px) {
         body::before {
-            content: "xl";
+          content: 'xl';
         }
-        }
+      }
 
-        @media (min-width: 1536px) {
+      @media (min-width: 1536px) {
         body::before {
-            content: "2xl";
+          content: '2xl';
         }
-        }
+      }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-    <div class="h-screen flex flex-col justify-center items-center">
-        <Label for="full_name" class="text-gray-700 text-sm font-bold select-none">Full Name</Label>
-        <input type="text" id="'full_name" placeholder="Enter your full name" class="m-2 shadow border rounded-lg w-4/6 py-3 px-2 text-gray-700 focus:bg-blue-100 placeholder-indigo-300">
-        <button class="m-2 px-3 py-2 bg-blue-900 text-blue-100 rounded-lg select-none">Save</button>
+  </head>
+  <body>
+    <div class="flex h-screen flex-col items-center justify-center">
+      <label for="full_name" class="select-none text-sm font-bold text-gray-700">Full Name</label>
+      <input
+        type="text"
+        id="'full_name"
+        placeholder="Enter your full name"
+        class="m-2 w-4/6 rounded-lg border px-2 py-3 text-gray-700 placeholder-indigo-300 shadow focus:bg-blue-100"
+      />
+      <button class="m-2 select-none rounded-lg bg-blue-900 px-3 py-2 text-blue-100">Save</button>
     </div>
-</body>
+  </body>
 </html>
